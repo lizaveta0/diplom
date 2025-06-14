@@ -36,6 +36,7 @@ public class PurchaseFromCreditCard {
     @BeforeEach
     public void setUp() {
         Configuration.reportsFolder = "target/selenide/reports";
+        Configuration.browserSize = "1920x1080";
         open("http://localhost:8080/");
         mainPage = new MainPage();
 
@@ -57,10 +58,12 @@ public class PurchaseFromCreditCard {
         purchasePage.submitPurchase();
         purchasePage.checkMessageForPurchase("Операция одобрена Банком.");
         sqlSteps = new SQLSteps();
-        sqlSteps.checkPurchaseStatuInsDB("APPROVED");
+        sqlSteps.checkPurchaseStatusInCreditRequestEntity("APPROVED");
     }
 
     @Test
+    //Тест с багом, должен быть текст ошибки из теста
+    //https://github.com/lizaveta0/diplom/issues/3
     public void testPurchaseNegative() {
         purchasePage = new PurchasePage();
         number = DECLINED_CARD_NUMBER;
@@ -68,6 +71,6 @@ public class PurchaseFromCreditCard {
         purchasePage.submitPurchase();
         purchasePage.checkMessageForPurchase("Ошибка! Банк отказал в проведении операции.");
         sqlSteps = new SQLSteps();
-        sqlSteps.checkPurchaseStatuInsDB("DECLINED");
+        sqlSteps.checkPurchaseStatusInCreditRequestEntity("DECLINED");
     }
 }

@@ -20,8 +20,8 @@ public class SQLHelper {
     }
 
     @SneakyThrows
-    public static String getPurchaseStatus() {
-        var statusSQL = "SELECT status FROM payment_entity LIMIT 1;";
+    public static String getPurchaseStatus(String tableName) {
+        var statusSQL = String.format("SELECT status FROM %s LIMIT 1;", tableName);
         try (var conn = getConn()) {
             System.out.println(Optional.ofNullable(QUERY_RUNNER.query(conn, statusSQL, new ScalarHandler<>())));
             return QUERY_RUNNER.query(conn, statusSQL, new ScalarHandler<>());
