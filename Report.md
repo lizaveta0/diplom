@@ -2,5 +2,10 @@
 В данном отчете описан результат проведенного тестирования с учетом не пройденных кейсов и багов.
 
  **Всего тест-кейсов:** 8
+ <img width="1396" alt="image" src="https://github.com/user-attachments/assets/0c2c4c9e-df98-46d9-92f1-e29d4b0d0cdb" />
+<img width="1710" alt="image" src="https://github.com/user-attachments/assets/30e59006-9282-4d12-848c-7bc7b8b3d359" />
+
  **Процент успешных тест-кейсов:** 62.5
+ 
  **Процент не успешных тест-кейсов:** 37.5
+ 
